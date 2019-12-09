@@ -1,0 +1,55 @@
+#!/bin/sh
+
+usage() {
+    echo "Usage: $0 <os-platform>"
+    exit 1
+}
+
+if [ $# -ne 1 ]
+then
+    usage $*
+fi
+
+ROOT_ROOT=`pwd`
+
+cd ${ROOT_ROOT}/liveMedia
+/bin/rm -f Makefile
+echo "TARGET_DIR=${ROOT_ROOT}/../../libs" > Makefile
+cat Makefile.head ${ROOT_ROOT}/live555_config.$1 Makefile.tail >> Makefile
+# chmod a-w Makefile 
+
+cd ${ROOT_ROOT}/groupsock
+/bin/rm -f Makefile
+echo "TARGET_DIR=${ROOT_ROOT}/../../libs" > Makefile
+cat Makefile.head ${ROOT_ROOT}/live555_config.$1 Makefile.tail >> Makefile
+# chmod a-w Makefile
+
+cd ${ROOT_ROOT}/UsageEnvironment
+/bin/rm -f Makefile
+echo "TARGET_DIR=${ROOT_ROOT}/../../libs" > Makefile
+cat Makefile.head ${ROOT_ROOT}/live555_config.$1 Makefile.tail >> Makefile
+# chmod a-w Makefile
+
+cd ${ROOT_ROOT}/BasicUsageEnvironment
+/bin/rm -f Makefile
+echo "TARGET_DIR=${ROOT_ROOT}/../../libs" > Makefile
+cat Makefile.head ${ROOT_ROOT}/live555_config.$1 Makefile.tail >> Makefile
+# chmod a-w Makefile
+
+cd ${ROOT_ROOT}/mediaServer
+/bin/rm -f Makefile
+echo "TARGET_DIR=${ROOT_ROOT}/../../libs" > Makefile
+cat Makefile.head ${ROOT_ROOT}/live555_config.$1 Makefile.tail >> Makefile
+# chmod a-w Makefile
+
+cd ${ROOT_ROOT}/live555MediaServer
+/bin/rm -f Makefile
+echo "TARGET_DIR=${ROOT_ROOT}/../../libs" > Makefile
+cat Makefile.head ${ROOT_ROOT}/live555_config.$1 Makefile.tail >> Makefile
+# chmod a-w Makefile
+
+cd ${ROOT_ROOT}
+/bin/rm -f Makefile
+echo "TARGET_DIR=${ROOT_ROOT}/../../libs" > Makefile
+cat Makefile.head Makefile.tail >> Makefile
+# chmod a-w Mak
